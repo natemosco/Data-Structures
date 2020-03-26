@@ -15,13 +15,13 @@ class Queue:
         # do I need to pass the Queue self to
 
     def enqueue(self, value):
-        self.storage.add_to_tail(value)
+        return self.storage.add_to_tail(value)
 
     def dequeue(self):
         if self.storage.head is None:
             return None
         else:
-            self.storage.remove_from_head()
+            return self.storage.remove_from_head()
     # def enqueue(self, value):
     #     self.storage.add_to_head(value)
 
