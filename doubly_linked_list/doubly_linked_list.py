@@ -84,7 +84,7 @@ class DoublyLinkedList:
     def add_to_tail(self, value):
         self.length += 1
         if not self.head and not self.tail:
-            self.head = self. tail = ListNode(value)
+            self.head = self.tail = ListNode(value)
         else:
             self.tail.insert_after(value)
             self.tail = self.tail.next
@@ -102,13 +102,15 @@ class DoublyLinkedList:
     List and inserts it as the new head node of the List."""
 
     def move_to_front(self, node):
-        pass
+        self.delete(node)
+        self.add_to_head(node.value)
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
 
     def move_to_end(self, node):
-        pass
+        self.delete(node)
+        self.add_to_tail(node.value)
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
@@ -131,4 +133,15 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
 
     def get_max(self):
-        pass
+        max_value = None
+        node = None
+        if self.head is not None:
+            node = self.head
+            max_value = self.head.value
+        else:
+            print("None, list has no nodes")
+        while node is not self.tail and node is not None:
+            node = node.next
+            if max_value < node.value:
+                max_value = node.value
+        return max_value
